@@ -11,6 +11,6 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
-        // Here we write all the logic for login page.
+        // Here we write all the logic for login page like email and password validation.
     }
 }
