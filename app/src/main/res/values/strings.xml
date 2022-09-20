@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">proffind</string>
+    <string name="username">User Name/Email Id</string>
+    <string name="password">Password</string>
+    <string name="submit">Submit</string>
+    <string name="login">Login Page</string>
+    <string name="remember">Remember me</string>
+    <string name="forgotpassword">Forgot Password</string>
+    <string name="signup">signup</string>
+    <string name="textSignUp">Not a user? click signup to create account</string>
+
 </resources>
