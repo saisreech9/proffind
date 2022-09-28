@@ -13,4 +13,8 @@ If the username is there in database, an email will be sent to the username’s 
 The home page for students will have the list of professors. 
 If they click on a particular professor, it directs to the next page where the available slots will be shown. 
 If the professor is available at a particular slot, the button will be highlighted otherwise not. 
-If the student makes an appointment, an email will be sent to both student and professor to let them know about the scheduled appointment. The home page for professors will have their time slots populated. They can modify/delete a particular time slot. NOTE: Password will be encrypted when saved to database.
+If the student makes an appointment, an email will be sent to both student and professor to let them know about the scheduled appointment. 
+The home page for professors will have their time slots populated. 
+They can modify/delete a particular time slot. 
+
+NOTE: Password will be encrypted when saved to database.
