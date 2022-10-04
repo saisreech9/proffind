@@ -7,6 +7,12 @@
     <string name="remember">Remember me</string>
     <string name="forgotpassword">Forgot Password</string>
     <string name="signup">signup</string>
+    <string name="newusername">User Name</string>
+    <string name="emailid">Email Address</string>
+    <string name="reenteremailid">Re-enter Email Address</string>
+    <string name="reenterpassword">Re-enter Password</string>
+    <string name="firstname">First Name</string>
+    <string name="lastname">Last Name</string>
     <string name="textSignUp">Not a user? click signup to create account</string>
 
 </resources>
