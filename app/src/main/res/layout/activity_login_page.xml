@@ -98,42 +98,38 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:background="#00000000"
-                    android:text="@string/forgotpassword"/>
+                    android:text="@string/forgotpassword" />
 
             </RelativeLayout>
 
             <Button
                 android:id="@+id/loginButton"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/submit"
-                android:layout_marginTop="20dp"/>
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="50dp"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/NotaUser"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
-
-                <TextView
-                    android:id="@+id/textNotaUser"
-                    style="@style/Widget.AppCompat.CompoundButton.CheckBox"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:buttonTint="@color/black"
-                    android:text="@string/textSignUp"
-                    android:textColor="@color/black" />
-
-                <TextView
-                    android:id="@+id/signUpButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:background="#00000000"
-                    android:clickable="true"
-                    android:text="@string/signup" />
-
-            </RelativeLayout>
+                android:text="@string/textSignUp"
+                android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/signUpButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/clicksignup"/>
 
         </LinearLayout>
 
