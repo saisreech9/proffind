@@ -14,5 +14,8 @@
     <string name="firstname">First Name</string>
     <string name="lastname">Last Name</string>
     <string name="textSignUp">Not a user? click signup to create account</string>
+    <string name="clicksignup">
+        <u>SIGN UP!</u>.
+    </string>
 
 </resources>

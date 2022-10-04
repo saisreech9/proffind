@@ -14,9 +14,6 @@
         android:theme="@style/Theme.Proffind"
         tools:targetApi="31">
         <activity
-            android:name=".SignUp"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -27,7 +24,7 @@
         </activity>
         <activity
             android:name=".LoginPage"
-            android:exported="false" />
+            android:exported="false"/>
     </application>
 
 </manifest>
