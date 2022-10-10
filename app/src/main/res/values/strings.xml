@@ -17,5 +17,10 @@
     <string name="clicksignup">
         <u>SIGN UP!</u>.
     </string>
+    <string-array name="usertypeselect">
+        <item>STUDENT</item>
+        <item>PROFESSOR</item>
+        <item>OTHER</item>
+    </string-array>
 
 </resources>
