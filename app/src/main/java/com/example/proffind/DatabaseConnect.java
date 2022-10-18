@@ -43,19 +43,29 @@ public class DatabaseConnect {
         return null;
     }
 
-    public void test()
+    public void populateUserDetailsTable(int userId, String userName, String firstName,
+                                         String lastName, String emailAddress, String password,
+                                         String userType)
     {
         connection = connectToDatabase();
         if (connection!=null)
         {
-            String select = "select count(*) from UserDetails";
             try (Statement stmt = connection.createStatement())
             {
-                ResultSet rs = stmt.executeQuery(select);
-                while(rs.next())
-                {
-                    System.out.println(rs.getString(1));
-                }
+                ResultSet rs = stmt.executeQuery(
+                        "insert into UserDetails values("
+                        +"'" + userId + "'" + ","
+                        +"'" + userName + "'" + ","
+                        +"'" + firstName + "'" + ","
+                        +"'" + lastName + "'" + ","
+                        +"'" + emailAddress + "'" + ","
+                        +"'" + password + "'" + ","
+                        +"'" + userType + "'" + ","
+                        +"'10:00:00'" + ","
+                        +"'10/18/2022'" + ","
+                        +"'10:00:00'" + ","
+                        +"'10/18/2022')");
+
             }
             catch (Exception e)
             {

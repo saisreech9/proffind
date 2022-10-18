@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.nio.channels.DatagramChannel;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
@@ -32,8 +33,6 @@ public class SignUp extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DatabaseConnect db = new DatabaseConnect();
-                db.test();
                 Intent intent = new Intent(SignUp.this,LoginPage.class);
                 startActivity(intent);
             }
@@ -42,9 +41,7 @@ public class SignUp extends AppCompatActivity {
         userType = (Spinner) findViewById(R.id.userType);
         adapter = ArrayAdapter.createFromResource(this,R.array.usertypeselect, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
-
         userType.setAdapter(adapter);
-
         signUp = findViewById(R.id.signUp);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,6 +116,9 @@ public class SignUp extends AppCompatActivity {
                                             reEnteredpasswordDetails = reEnteredPassword.getText().toString();
                                             boolean validateNewPassword = v.passwordValidation(reEnteredpasswordDetails);
                                             if (validateNewPassword && passwordDetails.equals(reEnteredpasswordDetails)) {
+                                                DatabaseConnect db = new DatabaseConnect();
+                                                db.populateUserDetailsTable(1,userNameDetails,firstNameDetails,
+                                                        lastNameDetails,emailAddressDetails,passwordDetails,"Student");
                                                 Toast.makeText(SignUp.this, "Everything looks good!", Toast.LENGTH_SHORT).show();
                                             } else {
                                                 Toast.makeText(SignUp.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
