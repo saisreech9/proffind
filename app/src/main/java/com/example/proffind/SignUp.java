@@ -32,6 +32,8 @@ public class SignUp extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                DatabaseConnect db = new DatabaseConnect();
+                db.test();
                 Intent intent = new Intent(SignUp.this,LoginPage.class);
                 startActivity(intent);
             }
