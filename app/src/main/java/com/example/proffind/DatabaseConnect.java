@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import javax.xml.transform.Result;
+
 public class DatabaseConnect {
 
     private static final String ip = "172.16.32.198";
@@ -43,6 +45,26 @@ public class DatabaseConnect {
         return null;
     }
 
+    public String getLatestUserId()
+    {
+        connection = connectToDatabase();
+        if(connection!=null)
+        {
+            try(Statement stmt = connection.createStatement())
+            {
+                ResultSet rs = stmt.executeQuery("SELECT userId FROM UserDetails order by userId desc");
+                while(rs.next())
+                {
+                    return rs.getString(1);
+                }
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        return null;
+    }
     public void populateUserDetailsTable(int userId, String userName, String firstName,
                                          String lastName, String emailAddress, String password,
                                          String userType)

@@ -117,7 +117,10 @@ public class SignUp extends AppCompatActivity {
                                             boolean validateNewPassword = v.passwordValidation(reEnteredpasswordDetails);
                                             if (validateNewPassword && passwordDetails.equals(reEnteredpasswordDetails)) {
                                                 DatabaseConnect db = new DatabaseConnect();
-                                                db.populateUserDetailsTable(1,userNameDetails,firstNameDetails,
+                                                System.out.println(db.getLatestUserId());
+                                                String latestUserId = db.getLatestUserId();
+                                                int getLatestUserId = Integer.parseInt(latestUserId);
+                                                db.populateUserDetailsTable(getLatestUserId+1,userNameDetails,firstNameDetails,
                                                         lastNameDetails,emailAddressDetails,passwordDetails,"Student");
                                                 Toast.makeText(SignUp.this, "Everything looks good!", Toast.LENGTH_SHORT).show();
                                             } else {
