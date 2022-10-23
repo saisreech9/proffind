@@ -67,7 +67,7 @@ public class DatabaseConnect {
     }
     public void populateUserDetailsTable(int userId, String userName, String firstName,
                                          String lastName, String emailAddress, String password,
-                                         String userType)
+                                         String userType, String currentDate, String currentTime)
     {
         connection = connectToDatabase();
         if (connection!=null)
@@ -83,10 +83,10 @@ public class DatabaseConnect {
                         +"'" + emailAddress + "'" + ","
                         +"'" + password + "'" + ","
                         +"'" + userType + "'" + ","
-                        +"'10:00:00'" + ","
-                        +"'10/18/2022'" + ","
-                        +"'10:00:00'" + ","
-                        +"'10/18/2022')");
+                        +"'" + currentDate + "'" + ","
+                        +"'" + currentTime + "'" + ","
+                        +"'" + currentDate + "'" + ","
+                        +"'" + currentTime + "'" + ")");
 
             }
             catch (Exception e)
@@ -94,6 +94,25 @@ public class DatabaseConnect {
                 e.printStackTrace();
             }
         }
+    }
+
+    public String validateUserName(String enteredUserName)
+    {
+        connection = connectToDatabase();
+        try(Statement stmt = connection.createStatement())
+        {
+            ResultSet rs = stmt.executeQuery("select userName from UserDetails where " +
+                    "userName = " + enteredUserName);
+            while(rs.next())
+            {
+                return rs.getString(1);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

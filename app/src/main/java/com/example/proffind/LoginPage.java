@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 public class LoginPage extends AppCompatActivity {
 
-    TextView signUp;
+    TextView signUp, enteredUserName;
     Button forgotPasswordPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,15 @@ public class LoginPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        DatabaseConnect db = new DatabaseConnect();
+        enteredUserName = findViewById(R.id.userName);
+        String enteredUserNameDetails = enteredUserName.getText().toString();
+        String dataBaseUserName = db.validateUserName(enteredUserNameDetails);
+        if(dataBaseUserName.equals(enteredUserNameDetails))
+        {
+            //check for password
+        }
 
     }
 }

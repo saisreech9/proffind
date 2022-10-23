@@ -13,6 +13,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.nio.channels.DatagramChannel;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Locale;
 import java.util.regex.Pattern;
 
@@ -119,9 +123,14 @@ public class SignUp extends AppCompatActivity {
                                                 DatabaseConnect db = new DatabaseConnect();
                                                 System.out.println(db.getLatestUserId());
                                                 String latestUserId = db.getLatestUserId();
+                                                SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
+                                                SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm:ss");
+                                                Date date = new Date();
+                                                String getTodayDate = dateFormatter.format(date);
+                                                String getTodayTime = timeFormatter.format(date);
                                                 int getLatestUserId = Integer.parseInt(latestUserId);
                                                 db.populateUserDetailsTable(getLatestUserId+1,userNameDetails,firstNameDetails,
-                                                        lastNameDetails,emailAddressDetails,passwordDetails,"Student");
+                                                        lastNameDetails,emailAddressDetails,passwordDetails,"Student",getTodayDate,getTodayTime);
                                                 Toast.makeText(SignUp.this, "Everything looks good!", Toast.LENGTH_SHORT).show();
                                             } else {
                                                 Toast.makeText(SignUp.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
