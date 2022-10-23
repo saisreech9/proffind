@@ -115,4 +115,30 @@ public class DatabaseConnect {
         return null;
     }
 
+    public boolean validatePassword(String password)
+    {
+        connection = connectToDatabase();
+        try(Statement stmt = connection.createStatement())
+        {
+            ResultSet rs = stmt.executeQuery("select password from UserDetails where" +
+                    "password = " + password);
+            while(rs.next())
+            {
+                if(password.equals(rs.getString(1)))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
 }

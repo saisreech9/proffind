@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class LoginPage extends AppCompatActivity {
 
-    TextView signUp, enteredUserName;
+    TextView signUp, enteredUserName, enteredPassword;
     Button forgotPasswordPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,21 @@ public class LoginPage extends AppCompatActivity {
         if(dataBaseUserName.equals(enteredUserNameDetails))
         {
             //check for password
+            enteredPassword = findViewById(R.id.password);
+            String enteredPasswordDetails = enteredPassword.getText().toString();
+            boolean isPasswordCorrect = db.validatePassword(enteredPasswordDetails);
+            if(isPasswordCorrect)
+            {
+                //login page logic
+            }
+            else
+            {
+                Toast.makeText(LoginPage.this, "Password is wrong", Toast.LENGTH_SHORT).show();
+            }
         }
-
+        else
+        {
+            Toast.makeText(LoginPage.this, "UserName does not exist", Toast.LENGTH_SHORT).show();
+        }
     }
 }
