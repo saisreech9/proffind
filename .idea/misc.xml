@@ -4,10 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/drawable/spinner_background.xml" value="0.1" />
+        <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/drawable/toggle.xml" value="0.1" />
         <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/layout/activity_forgot_password.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/layout/activity_home_page.xml" value="0.16145833333333334" />
         <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/layout/activity_login_page.xml" value="0.22" />
         <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/layout/activity_main.xml" value="0.11614583333333334" />
         <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/layout/activity_sign_up.xml" value="0.1" />
+        <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/layout/activity_test.xml" value="0.1901805869074492" />
+        <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/layout/fragment_dashboard.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/layout/fragment_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/layout/fragment_notifications.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/SreeCheekatimarla/AndroidStudioProjects/proffind/app/src/main/res/layout/spinner_background.xml" value="0.17447916666666666" />
       </map>
     </option>

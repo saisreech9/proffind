@@ -6,74 +6,76 @@
     android:layout_height="match_parent"
     android:background="@color/green"
     android:padding="30dp"
-    tools:context=".LoginPage">
+    tools:context=".LoginPage"
+    tools:ignore="OnClick">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <ImageView
             android:id="@+id/logo"
-            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:src="@drawable/csu"/>
+            android:layout_height="wrap_content"
+            android:src="@drawable/csu" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/login"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="40sp"
-            android:textAlignment="center" />
+            android:textSize="40sp" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="50dp"
+            android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="@string/username"
-                app:helperText="Required*"
-                app:helperTextTextColor="#D50000"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidthFocused="2dp"
-                app:startIconDrawable="@drawable/person"
                 app:endIconMode="clear_text"
-                app:endIconTint="@color/black">
+                app:endIconTint="@color/black"
+                app:helperText="Required*"
+                app:helperTextTextColor="#D50000"
+                app:startIconDrawable="@drawable/person">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/userName"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textColor="@color/black"
-                    android:inputType="text">
-                </com.google.android.material.textfield.TextInputEditText>
+                    android:inputType="text"
+                    android:textColor="@color/black"></com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="@string/password"
-                app:helperText="Required*"
-                app:helperTextTextColor="#D50000"
                 app:boxStrokeColor="@color/black"
                 app:boxStrokeWidthFocused="2dp"
-                app:startIconDrawable="@drawable/password"
-                app:startIconTint="@color/black"
                 app:endIconMode="password_toggle"
-                app:endIconTint="@color/black">
+                app:endIconTint="@color/black"
+                app:helperText="Required*"
+                app:helperTextTextColor="#D50000"
+                app:startIconDrawable="@drawable/password"
+                app:startIconTint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="textPassword"
-                    android:textColor="@color/black">
-                </com.google.android.material.textfield.TextInputEditText>
+                    android:textColor="@color/black"></com.google.android.material.textfield.TextInputEditText>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,7 +92,7 @@
                     android:layout_centerVertical="true"
                     android:buttonTint="@color/black"
                     android:text="@string/remember"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
 
                 <Button
                     android:id="@+id/forgotPassword"
@@ -106,30 +108,32 @@
                 android:id="@+id/loginButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/submit"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:layout_gravity="center"/>
+                android:onClick="confirmLogin"
+                android:text="@string/submit" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:layout_gravity="center">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/NotaUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/textSignUp"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="@string/textSignUp" />
+
             <TextView
                 android:id="@+id/signUpButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/clicksignup"/>
+                android:text="@string/clicksignup" />
 
         </LinearLayout>
 

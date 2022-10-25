@@ -96,23 +96,30 @@ public class DatabaseConnect {
         }
     }
 
-    public String validateUserName(String enteredUserName)
+    public boolean validateUserName(String enteredUserName)
     {
         connection = connectToDatabase();
         try(Statement stmt = connection.createStatement())
         {
             ResultSet rs = stmt.executeQuery("select userName from UserDetails where " +
-                    "userName = " + enteredUserName);
+                    "userName = " + "'" + enteredUserName + "'");
             while(rs.next())
             {
-                return rs.getString(1);
+                if(rs.getString(1).equals(enteredUserName))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
-        return null;
+        return false;
     }
 
     public boolean validatePassword(String password)
@@ -120,8 +127,8 @@ public class DatabaseConnect {
         connection = connectToDatabase();
         try(Statement stmt = connection.createStatement())
         {
-            ResultSet rs = stmt.executeQuery("select password from UserDetails where" +
-                    "password = " + password);
+            ResultSet rs = stmt.executeQuery("select password from UserDetails where " +
+                    "password = " + "'" + password + "'");
             while(rs.next())
             {
                 if(password.equals(rs.getString(1)))
