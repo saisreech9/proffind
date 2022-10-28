@@ -49,11 +49,14 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String userNameDetails, firstNameDetails, lastNameDetails, emailAddressDetails, reEnteredemailAddressDetails, passwordDetails, reEnteredpasswordDetails;
+                String userTypeDetails,userNameDetails, firstNameDetails, lastNameDetails, emailAddressDetails, reEnteredemailAddressDetails, passwordDetails, reEnteredpasswordDetails;
+
+
 
                 /**
                  * Getting the user entered details from application into local variables.
                  * */
+                userType = findViewById(R.id.userType);
                 enteredUserName = findViewById(R.id.signUpUserName);
                 enteredFirstName = findViewById(R.id.firstName);
                 enteredLastName = findViewById(R.id.lastName);
@@ -73,6 +76,7 @@ public class SignUp extends AppCompatActivity {
                  * username cannot exceed 60 characters.
                  * username cannot have numbers or special characters.
                  * */
+                System.out.println(userType);
                 userNameDetails = enteredUserName.getText().toString().toLowerCase();
                 validations v = new validations();
 

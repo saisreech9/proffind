@@ -29,6 +29,7 @@ public class LoginPage extends AppCompatActivity {
             }
         });
 
+
         forgotPasswordPage = (Button) findViewById(R.id.forgotPassword);
         forgotPasswordPage.setOnClickListener(new View.OnClickListener() {
             @Override
