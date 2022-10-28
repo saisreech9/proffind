@@ -56,6 +56,7 @@ public class SignUp extends AppCompatActivity {
                 /**
                  * Getting the user entered details from application into local variables.
                  * */
+                // getting the spinner to local variable
                 userType = findViewById(R.id.userType);
                 enteredUserName = findViewById(R.id.signUpUserName);
                 enteredFirstName = findViewById(R.id.firstName);
