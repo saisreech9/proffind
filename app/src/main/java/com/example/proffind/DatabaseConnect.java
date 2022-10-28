@@ -83,10 +83,10 @@ public class DatabaseConnect {
                         +"'" + emailAddress + "'" + ","
                         +"'" + password + "'" + ","
                         +"'" + userType + "'" + ","
-                        +"'" + currentDate + "'" + ","
                         +"'" + currentTime + "'" + ","
                         +"'" + currentDate + "'" + ","
-                        +"'" + currentTime + "'" + ")");
+                        +"'" + currentTime + "'" + ","
+                        +"'" + currentDate + "'" + ")");
 
             }
             catch (Exception e)

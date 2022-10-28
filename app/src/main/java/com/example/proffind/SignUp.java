@@ -122,7 +122,7 @@ public class SignUp extends AppCompatActivity {
                                                 System.out.println(db.getLatestUserId());
                                                 String latestUserId = db.getLatestUserId();
                                                 int getLatestUserId = Integer.parseInt(latestUserId);
-                                                SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/dd/yyyy");
+                                                SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
                                                 SimpleDateFormat timeFormatter = new SimpleDateFormat("HH:mm:ss");
                                                 Date date = new Date();
                                                 String getTodayDate = dateFormatter.format(date);
