@@ -37,12 +37,14 @@ public class LoginPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+    }
+    public void confirmLogin(View v)
+    {
         DatabaseConnect db = new DatabaseConnect();
         enteredUserName = findViewById(R.id.userName);
         String enteredUserNameDetails = enteredUserName.getText().toString();
-        String dataBaseUserName = db.validateUserName(enteredUserNameDetails);
-        if(dataBaseUserName.equals(enteredUserNameDetails))
+        boolean dataBaseUserName = db.validateUserName(enteredUserNameDetails);
+        if(dataBaseUserName)
         {
             //check for password
             enteredPassword = findViewById(R.id.password);
@@ -50,6 +52,7 @@ public class LoginPage extends AppCompatActivity {
             boolean isPasswordCorrect = db.validatePassword(enteredPasswordDetails);
             if(isPasswordCorrect)
             {
+                Toast.makeText(LoginPage.this, "Good to go", Toast.LENGTH_SHORT).show();
                 //login page logic
             }
             else
