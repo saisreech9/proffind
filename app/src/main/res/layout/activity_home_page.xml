@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -27,26 +27,11 @@
             android:layout_weight="1" />
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomBar"
-            android:background="@color/green"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            tools:ignore="BottomAppBar,MissingConstraints"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:flow_horizontalBias="0.5"
-            app:layout_constraintStart_toStartOf="parent">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-
-</LinearLayout>
+        android:background="@color/green"
+        android:layout_height="65dp"
+        app:menu="@menu/bottom_navigation"
+        android:layout_alignParentBottom="true"
+        />
+</RelativeLayout>
