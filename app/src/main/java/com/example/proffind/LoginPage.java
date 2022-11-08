@@ -13,7 +13,7 @@ import android.widget.Toast;
 public class LoginPage extends AppCompatActivity {
 
     TextView signUp, enteredUserName, enteredPassword;
-    Button forgotPasswordPage;
+    Button forgotPasswordPage,loginButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,7 @@ public class LoginPage extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
     public void confirmLogin(View v)
     {
@@ -54,6 +55,9 @@ public class LoginPage extends AppCompatActivity {
             if(isPasswordCorrect)
             {
                 Toast.makeText(LoginPage.this, "Good to go", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginPage.this,HomePage.class);
+                startActivity(intent);
+
                 //login page logic
             }
             else
