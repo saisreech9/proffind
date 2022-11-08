@@ -57,7 +57,7 @@ public class SignUp extends AppCompatActivity {
                  * Getting the user entered details from application into local variables.
                  * */
                 // getting the spinner to local variable
-                userType = findViewById(R.id.userType);
+                //userType = findViewById(R.id.userType);
                 enteredUserName = findViewById(R.id.signUpUserName);
                 enteredFirstName = findViewById(R.id.firstName);
                 enteredLastName = findViewById(R.id.lastName);
@@ -77,7 +77,7 @@ public class SignUp extends AppCompatActivity {
                  * username cannot exceed 60 characters.
                  * username cannot have numbers or special characters.
                  * */
-                System.out.println(userType);
+                //System.out.println(userType.getSelectedItem().toString());
                 userNameDetails = enteredUserName.getText().toString().toLowerCase();
                 validations v = new validations();
 
@@ -124,7 +124,6 @@ public class SignUp extends AppCompatActivity {
                                             boolean validateNewPassword = v.passwordValidation(reEnteredpasswordDetails);
                                             if (validateNewPassword && passwordDetails.equals(reEnteredpasswordDetails)) {
                                                 DatabaseConnect db = new DatabaseConnect();
-                                                System.out.println(db.getLatestUserId());
                                                 String latestUserId = db.getLatestUserId();
                                                 int getLatestUserId = Integer.parseInt(latestUserId);
                                                 SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -132,8 +131,9 @@ public class SignUp extends AppCompatActivity {
                                                 Date date = new Date();
                                                 String getTodayDate = dateFormatter.format(date);
                                                 String getTodayTime = timeFormatter.format(date);
+                                                userTypeDetails = userType.getSelectedItem().toString();
                                                 db.populateUserDetailsTable(getLatestUserId+1,userNameDetails,firstNameDetails,
-                                                        lastNameDetails,emailAddressDetails,passwordDetails,"Student",getTodayDate,getTodayTime);
+                                                        lastNameDetails,emailAddressDetails,passwordDetails,userTypeDetails,getTodayDate,getTodayTime);
                                                 Toast.makeText(SignUp.this, "Everything looks good!", Toast.LENGTH_SHORT).show();
                                             } else {
                                                 Toast.makeText(SignUp.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
