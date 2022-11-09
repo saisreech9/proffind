@@ -13,7 +13,7 @@ import javax.xml.transform.Result;
 
 public class DatabaseConnect {
 
-    private static final String ip = "172.16.32.198";
+    private static final String ip = "172.20.49.70";
     private static final String port = "1433";
     private static final String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static final String database = "proffind";

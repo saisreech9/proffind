@@ -7,31 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".HomePage">
 
-    <LinearLayout
+    <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView3"
-            android:name="com.example.proffind.HomeFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/fragmentContainerView4"
-            android:name="com.example.proffind.ProfileFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
+        android:layout_height="match_parent">
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomView"
         android:layout_width="match_parent"
-        android:background="@color/green"
         android:layout_height="65dp"
-        app:menu="@menu/bottom_navigation"
         android:layout_alignParentBottom="true"
-        />
+        android:background="@color/green"
+        app:menu="@menu/bottom_navigation" />
 </RelativeLayout>
