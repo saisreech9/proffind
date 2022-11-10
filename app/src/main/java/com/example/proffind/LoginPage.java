@@ -55,6 +55,7 @@ public class LoginPage extends AppCompatActivity {
             if(isPasswordCorrect)
             {
                 Toast.makeText(LoginPage.this, "Good to go", Toast.LENGTH_SHORT).show();
+
                 Intent intent = new Intent(LoginPage.this,HomePage.class);
                 startActivity(intent);
 

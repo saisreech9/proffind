@@ -1,19 +1,17 @@
 package com.example.proffind;
 
 import android.os.StrictMode;
-import android.util.Log;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import javax.xml.transform.Result;
+import java.util.ArrayList;
 
 public class DatabaseConnect {
 
-    private static final String ip = "172.20.49.70";
+    private static final String ip = "192.168.0.18";
     private static final String port = "1433";
     private static final String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static final String database = "proffind";
@@ -43,6 +41,29 @@ public class DatabaseConnect {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public ArrayList<String> fillSpinner()
+    {
+        ArrayList<String> profName = new ArrayList<>();
+        connection = connectToDatabase();
+        if(connection!=null)
+        {
+            try(Statement stmt = connection.createStatement())
+            {
+                ResultSet rs = stmt.executeQuery("select * from ProfessorDetails");
+                while(rs.next())
+                {
+                    String profNameDetails = rs.getString("profName");
+                    profName.add(profNameDetails);
+                }
+            }
+            catch(Exception e)
+            {
+                e.printStackTrace();
+            }
+        }
+        return profName;
     }
 
     public String getLatestUserId()
@@ -146,6 +167,22 @@ public class DatabaseConnect {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public void updateFirstName(String updatedFirstName,String enteredFirstName)
+    {
+        connection = connectToDatabase();
+        try(Statement stmt = connection.createStatement())
+        {
+            ResultSet rs = stmt.executeQuery(
+                    "update UserDetails set firstName = " + "'" + updatedFirstName + "'" +
+                    " where firstName = " + "'" + enteredFirstName + "'" +
+                    " and userName = 'hello'");
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }
