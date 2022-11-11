@@ -58,16 +58,70 @@
                 android:background="@drawable/spinner_background"/>
 
             <Button
+                android:layout_gravity="center"
                 android:id="@+id/selectProfessorButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:background="@color/green"
+                android:layout_marginTop="20dp"
                 android:text="Select"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="100dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/timeSlot1"
+                android:text="12:00pm - 1:00pm"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:background="@color/green"
-                android:layout_gravity="center"
-                />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/timeSlot2"
+                android:text="1:30pm - 2:30pm"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:background="@color/green"
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/timeSlot3"
+                android:text="3:00pm - 4:00pm"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:background="@color/green"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/timeSlot4"
+                android:text="3:30pm - 4:30pm"
+                android:textSize="20dp"
+                android:textColor="@color/black"
+                android:background="@color/green"
+                android:layout_marginLeft="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
 
     </LinearLayout>
