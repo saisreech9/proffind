@@ -38,10 +38,6 @@ public class ForgotPassword extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(ForgotPassword.this, LoginPage.class);
                 startActivity(intent);
-                //get the email address from database with the username
-                //send password details to email if email address found.
-                //if username does not exists, throw error message
-
             }
         });
 
@@ -58,28 +54,25 @@ public class ForgotPassword extends AppCompatActivity {
                 boolean checkUserName = db.checkUserNameExists(enteredUserName);
                 if(checkUserName)
                 {
-
+                    String userEmailAddress = saveLoginDetails.getInstance().getEmailAddress();
+                    String password = saveLoginDetails.getInstance().getPassword();
+                    String passwordMessage = "Hello User,\n\nHope you have a good day\n Please find your" +
+                            " password details below:\n Password: "+password;
+                    sendPasswordEmail(userEmailAddress,passwordMessage);
+                    Toast.makeText(ForgotPassword.this, "Password details has been sent to your email address. Please check your email address", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(ForgotPassword.this,LoginPage.class);
+                    startActivity(intent);
                 }
                 else
                 {
                     Toast.makeText(ForgotPassword.this, "user Name does not exists", Toast.LENGTH_SHORT).show();
                 }
-//                if(saveLoginDetails.getInstance().getEmailAddress().equals("null"))
-//                {
-//                    Toast.makeText(ForgotPassword.this, "User Name does not exists", Toast.LENGTH_SHORT).show();
-//                }
-//                else
-//                {
-//                    String emailAddress = saveLoginDetails.getInstance().getEmailAddress();
-//                    System.out.println(emailAddress);
-//                }
             }
         });
     }
     public void sendPasswordEmail(String userEmailAddress, String passwordMessage)
     {
         String senderEmail = "testcis634@gmail.com";
-        //String recieverEmailStudent = saveLoginDetails.getInstance().getEmailAddress();
         String senderPassword = "ztjjbsieyumsqpjn";
 
         String host = "smtp.gmail.com";

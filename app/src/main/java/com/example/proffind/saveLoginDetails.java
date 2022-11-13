@@ -13,7 +13,17 @@ public class saveLoginDetails {
     String userType;
     String gender;
     String addres;
+    String userName;
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    String password;
 
     public String getGender() {
         return gender;
@@ -38,8 +48,6 @@ public class saveLoginDetails {
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
-    String userName;
 
     public String getFirstName() {
         return firstName;
@@ -99,6 +107,7 @@ public class saveLoginDetails {
                         setUserName(rs.getString("userName"));
                         setGender(rs.getString("gender"));
                         setAddres(rs.getString("address"));
+                        setPassword(rs.getString("password"));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
