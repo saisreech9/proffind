@@ -12,11 +12,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.nio.channels.DatagramChannel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Locale;
-import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity {
 
@@ -75,14 +72,12 @@ public class SignUp extends AppCompatActivity {
                  * username cannot exceed 60 characters.
                  * username cannot have numbers or special characters.
                  * */
-                //System.out.println(userType.getSelectedItem().toString());
                 userNameDetails = enteredUserName.getText().toString().toLowerCase();
                 validations v = new validations();
 
                 boolean validateUserName = v.nameValidations(userNameDetails);
                 DatabaseConnect db = new DatabaseConnect();
                 boolean checkUserNameExists = db.checkUserNameExists(userNameDetails);
-                //check if username already exists in database
                 if(!checkUserNameExists)
                 {
                     if (validateUserName) {
