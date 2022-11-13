@@ -1,6 +1,5 @@
 package com.example.proffind;
 
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -12,6 +11,25 @@ public class saveLoginDetails {
     String lastName;
     String emailAddress;
     String userType;
+    String gender;
+    String addres;
+
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddres() {
+        return addres;
+    }
+
+    public void setAddres(String addres) {
+        this.addres = addres;
+    }
 
     public String getUserName() {
         return userName;
@@ -79,6 +97,8 @@ public class saveLoginDetails {
                         setEmailAddress(rs.getString("emailAddress"));
                         setUserType(rs.getString("userType"));
                         setUserName(rs.getString("userName"));
+                        setGender(rs.getString("gender"));
+                        setAddres(rs.getString("address"));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();

@@ -4,8 +4,6 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +14,6 @@ import android.widget.Toast;
 public class ProfileFragment extends Fragment {
 
     EditText profileFirstName,profileLastName,profileEmailAddress,profileGender,profileAddress;
-    String editedFirstName,editedLastName,editedEmailAddress,editedGender,editedAddress;
-    String enteredFirstName,enteredLastName, enteredEmailAddress, enteredGender, enteredAddress;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +34,8 @@ public class ProfileFragment extends Fragment {
         profileFirstName.setText(saveLoginDetails.getInstance().getFirstName());
         profileLastName.setText(saveLoginDetails.getInstance().getLastName());
         profileEmailAddress.setText(saveLoginDetails.getInstance().getEmailAddress());
+        profileGender.setText(saveLoginDetails.getInstance().getGender());
+        profileAddress.setText(saveLoginDetails.getInstance().getAddres());
 
         Button update = (Button) view.findViewById(R.id.updateProfile);
         update.setOnClickListener(new View.OnClickListener() {
@@ -45,106 +43,32 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 if(!(saveLoginDetails.getInstance().getFirstName().equals(profileFirstName.getText().toString())))
                 {
-                    System.out.println("FirstName database "+ saveLoginDetails.getInstance().getFirstName());
-                    System.out.println(profileFirstName.getText().toString());
                     DatabaseConnect db = new DatabaseConnect();
                     db.updateFirstName(profileFirstName.getText().toString(),saveLoginDetails.getInstance().getFirstName());
                     Toast.makeText(getContext(), "updated", Toast.LENGTH_SHORT).show();
                 }
-                else
+                if(!(saveLoginDetails.getInstance().getLastName().equals(profileLastName.getText().toString())))
                 {
-                    Toast.makeText(getContext(), "update Failed", Toast.LENGTH_SHORT).show();
+                    DatabaseConnect db = new DatabaseConnect();
+                    db.updateLastName(profileLastName.getText().toString(),saveLoginDetails.getInstance().getLastName());
                 }
-//                profileFirstName.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        enteredFirstName = profileFirstName.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        editedFirstName = profileFirstName.getText().toString();
-//                    }
-//                    @Override
-//                    public void afterTextChanged(Editable editable) {
-//                        if(!(enteredFirstName.equals(editedFirstName)))
-//                        {
-//                            DatabaseConnect db = new DatabaseConnect();
-//                            db.updateFirstName(editedFirstName,enteredFirstName);
-//                        }
-//                    }
-//                });
-//
-//                profileLastName.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        enteredLastName = profileLastName.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        editedLastName = profileLastName.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable editable) {
-//
-//                    }
-//                });
-//
-//                profileAddress.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        enteredAddress = profileAddress.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        editedAddress = profileAddress.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable editable) {
-//
-//                    }
-//                });
-//
-//                profileGender.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        enteredGender = profileGender.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        editedGender = profileGender.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable editable) {
-//
-//                    }
-//                });
-//
-//                profileEmailAddress.addTextChangedListener(new TextWatcher() {
-//                    @Override
-//                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        enteredEmailAddress = profileEmailAddress.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                        editedEmailAddress = profileEmailAddress.getText().toString();
-//                    }
-//
-//                    @Override
-//                    public void afterTextChanged(Editable editable) {
-//
-//                    }
-//                });
+                if(!(saveLoginDetails.getInstance().getEmailAddress().equals(profileEmailAddress.getText().toString())))
+                {
+                    DatabaseConnect db = new DatabaseConnect();
+                    db.updateEmailAddress(profileEmailAddress.getText().toString(),saveLoginDetails.getInstance().getEmailAddress());
+                }
+                if(!(saveLoginDetails.getInstance().getGender().equals(profileGender.getText().toString())))
+                {
+                    DatabaseConnect db = new DatabaseConnect();
+                    db.updateGender(profileGender.getText().toString(),saveLoginDetails.getInstance().getGender());
+                }
+                if(!(saveLoginDetails.getInstance().getAddres().equals(profileAddress.getText().toString())))
+                {
+                    DatabaseConnect db = new DatabaseConnect();
+                    db.updateAddress(profileAddress.getText().toString(),saveLoginDetails.getInstance().getAddres());
+                }
             }
         });
-
         return view;
 
     }

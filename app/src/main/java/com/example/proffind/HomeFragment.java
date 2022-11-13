@@ -89,13 +89,89 @@ public class HomeFragment extends Fragment {
                             String emailMessageStudent = "Hello\n\nYour appointment is scheduled with " +
                                     "Professor "+selectedProfessor+"\n\nDate & Time: Monday, 12:00PM-1:00PM";
                             db.updateSchedule(timeId,getProfId);
+                            Toast.makeText(getContext(), "Appointment Scheduled! Please check your email", Toast.LENGTH_SHORT).show();
                             sendEmail(emailMessageProfessor,emailMessageStudent,professorEmailAddress);
                         }
                     }
                 });
                 timeSlot2.setVisibility(View.VISIBLE);
+                timeSlot2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int timeId = 2;
+                        DatabaseConnect db = new DatabaseConnect();
+                        int getProfId = db.getProfessorId(selectedProfessor);
+                        String isScheduled = db.timeSlotAvailabity(timeId,getProfId);
+                        String professorEmailAddress = db.getProfessorEmailAddress(getProfId);
+                        if(isScheduled.equals("1"))
+                        {
+                            Toast.makeText(getContext(), "This slot is taken, please find another slot", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            String emailMessageProfessor = "Hello Professor\n\nAn appointment is scheduled on Tuesday at 1:30" +
+                                    "PM-2:30PM with "+saveLoginDetails.getInstance().getFirstName()+" "+saveLoginDetails.getInstance().getLastName();
+                            System.out.println(emailMessageProfessor);
+                            String emailMessageStudent = "Hello\n\nYour appointment is scheduled with " +
+                                    "Professor "+selectedProfessor+"\n\nDate & Time: Tuesday, 1:30PM-2:30PM";
+                            db.updateSchedule(timeId,getProfId);
+                            Toast.makeText(getContext(), "Appointment Scheduled! Please check your email", Toast.LENGTH_SHORT).show();
+                            sendEmail(emailMessageProfessor,emailMessageStudent,professorEmailAddress);
+                        }
+                    }
+                });
                 timeSlot3.setVisibility(View.VISIBLE);
+                timeSlot3.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int timeId = 3;
+                        DatabaseConnect db = new DatabaseConnect();
+                        int getProfId = db.getProfessorId(selectedProfessor);
+                        String isScheduled = db.timeSlotAvailabity(timeId,getProfId);
+                        String professorEmailAddress = db.getProfessorEmailAddress(getProfId);
+                        if(isScheduled.equals("1"))
+                        {
+                            Toast.makeText(getContext(), "This slot is taken, please find another slot", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            String emailMessageProfessor = "Hello Professor\n\nAn appointment is scheduled on Wednesday at 3:00" +
+                                    "PM-4:00PM with "+saveLoginDetails.getInstance().getFirstName()+" "+saveLoginDetails.getInstance().getLastName();
+                            System.out.println(emailMessageProfessor);
+                            String emailMessageStudent = "Hello\n\nYour appointment is scheduled with " +
+                                    "Professor "+selectedProfessor+"\n\nDate & Time: Wednesday, 3:00PM-4:00PM";
+                            db.updateSchedule(timeId,getProfId);
+                            Toast.makeText(getContext(), "Appointment Scheduled! Please check your email", Toast.LENGTH_SHORT).show();
+                            sendEmail(emailMessageProfessor,emailMessageStudent,professorEmailAddress);
+                        }
+                    }
+                });
                 timeSlot4.setVisibility(View.VISIBLE);
+                timeSlot4.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int timeId = 4;
+                        DatabaseConnect db = new DatabaseConnect();
+                        int getProfId = db.getProfessorId(selectedProfessor);
+                        String isScheduled = db.timeSlotAvailabity(timeId,getProfId);
+                        String professorEmailAddress = db.getProfessorEmailAddress(getProfId);
+                        if(isScheduled.equals("1"))
+                        {
+                            Toast.makeText(getContext(), "This slot is taken, please find another slot", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            String emailMessageProfessor = "Hello Professor\n\nAn appointment is scheduled on Thursday at 3:30" +
+                                    "PM-4:30PM with "+saveLoginDetails.getInstance().getFirstName()+" "+saveLoginDetails.getInstance().getLastName();
+                            System.out.println(emailMessageProfessor);
+                            String emailMessageStudent = "Hello\n\nYour appointment is scheduled with " +
+                                    "Professor "+selectedProfessor+"\n\nDate & Time: Thursday, 3:30PM-4:30PM";
+                            db.updateSchedule(timeId,getProfId);
+                            Toast.makeText(getContext(), "Appointment Scheduled! Please check your email", Toast.LENGTH_SHORT).show();
+                            sendEmail(emailMessageProfessor,emailMessageStudent,professorEmailAddress);
+                        }
+                    }
+                });
             }
         });
         return view;

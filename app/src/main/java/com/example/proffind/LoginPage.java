@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Locale;
+
 
 public class LoginPage extends AppCompatActivity {
 
@@ -44,23 +46,20 @@ public class LoginPage extends AppCompatActivity {
     {
         DatabaseConnect db = new DatabaseConnect();
         enteredUserName = findViewById(R.id.userName);
-        String enteredUserNameDetails = enteredUserName.getText().toString();
+        String enteredUserNameDetails = enteredUserName.getText().toString().toLowerCase(Locale.ROOT);
         boolean dataBaseUserName = db.validateUserName(enteredUserNameDetails);
         if(dataBaseUserName)
         {
-            //check for password
             enteredPassword = findViewById(R.id.password);
             String enteredPasswordDetails = enteredPassword.getText().toString();
             boolean isPasswordCorrect = db.validatePassword(enteredPasswordDetails);
-            String studentEmailAddress = saveLoginDetails.getInstance().getEmailAddress();
             if(isPasswordCorrect)
             {
+                //if student, got to this page.
                 Toast.makeText(LoginPage.this, "Good to go", Toast.LENGTH_SHORT).show();
                 saveLoginDetails.getInstance().setDetails(enteredUserNameDetails);
                 Intent intent = new Intent(LoginPage.this,HomePage.class);
                 startActivity(intent);
-
-                //login page logic
             }
             else
             {

@@ -94,12 +94,40 @@ public class DatabaseConnect {
                                 + "'" + currentTime + "'" + ","
                                 + "'" + currentDate + "'" + ","
                                 + "'" + currentTime + "'" + ","
-                                + "'" + currentDate + "'" + ")");
+                                + "'" + currentDate + "'" + ","
+                                + "'N/A'" + ","
+                                + "'N/A'" + ")");
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    public boolean checkUserNameExists(String enteredUserName)
+    {
+        connection = connectToDatabase();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select userName from" +
+                    " UserDetails where userName = " + "'" + enteredUserName + "'");
+            while(rs.next())
+            {
+                System.out.println(rs.getString("userName"));
+                System.out.println(enteredUserName);
+                if(rs.getString("userName").equals(enteredUserName))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public boolean validateUserName(String enteredUserName) {
@@ -138,23 +166,65 @@ public class DatabaseConnect {
         return false;
     }
 
-    public boolean updateFirstName(String updatedFirstName, String enteredFirstName) {
+    public void updateFirstName(String updatedFirstName, String enteredFirstName) {
         connection = connectToDatabase();
         try (Statement stmt = connection.createStatement()) {
             String updateFirstName = "update UserDetails set firstName = " + "'" + updatedFirstName + "'" +
                     " where firstName = " + "'" + enteredFirstName + "'" +
                     " and userName = " + "'" + saveLoginDetails.getInstance().getUserName() + "'";
             stmt.executeUpdate(updateFirstName);
-//            if ((stmt.executeUpdate(updateFirstName) == 0)) {
-//                return true;
-//            } else {
-//                return false;
-//            }
+        } catch (Exception e) {
 
+            e.printStackTrace();
+        }
+    }
+
+    public void updateLastName(String updatedLastName, String enteredLastName) {
+        connection = connectToDatabase();
+        try (Statement stmt = connection.createStatement()) {
+            String updateLastName = "update UserDetails set lastName = " + "'" + updatedLastName + "'" +
+                    " where lastName = " + "'" + enteredLastName + "'" +
+                    " and userName = " + "'" + saveLoginDetails.getInstance().getUserName() + "'";
+            stmt.executeUpdate(updateLastName);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return false;
+    }
+
+    public void updateEmailAddress(String updatedEmailAddress, String enteredEmailAddress) {
+        connection = connectToDatabase();
+        try (Statement stmt = connection.createStatement()) {
+            String updateEmailAddress = "update UserDetails set emailAddress = " + "'" + updatedEmailAddress + "'" +
+                    " where emailAddress = " + "'" + enteredEmailAddress + "'" +
+                    " and userName = " + "'" + saveLoginDetails.getInstance().getUserName() + "'";
+            stmt.executeUpdate(updateEmailAddress);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateGender(String updatedGender, String enteredGender) {
+        connection = connectToDatabase();
+        try (Statement stmt = connection.createStatement()) {
+            String updateGender = "update UserDetails set gender = " + "'" + updatedGender + "'" +
+                    " where gender = " + "'" + enteredGender + "'" +
+                    " and userName = " + "'" + saveLoginDetails.getInstance().getUserName() + "'";
+            stmt.executeUpdate(updateGender);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateAddress(String updatedAddress, String enteredAddress) {
+        connection = connectToDatabase();
+        try (Statement stmt = connection.createStatement()) {
+            String updateAddress = "update UserDetails set address = " + "'" + updatedAddress + "'" +
+                    " where address = " + "'" + enteredAddress + "'" +
+                    " and userName = " + "'" + saveLoginDetails.getInstance().getUserName() + "'";
+            stmt.executeUpdate(updateAddress);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public int getProfessorId(String profName)
@@ -224,16 +294,8 @@ public class DatabaseConnect {
 
             stmt.executeUpdate(updateSchedule);
 
-//            if ((stmt.executeUpdate(updateSchedule) == 0)) {
-//                return true;
-//            } else {
-//                return false;
-//            }
-            //return true;
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-        //return false;
     }
 }
