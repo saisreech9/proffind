@@ -3,7 +3,6 @@ package com.example.proffind;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Properties;
@@ -48,6 +48,7 @@ public class HomeFragment extends Fragment {
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         displayProfDetails.setAdapter(dataAdapter);
 
+
         timeSlot1 = (Button) view.findViewById(R.id.timeSlot1);
         timeSlot2 = (Button) view.findViewById(R.id.timeSlot2);
         timeSlot3 = (Button) view.findViewById(R.id.timeSlot3);
@@ -57,17 +58,39 @@ public class HomeFragment extends Fragment {
         timeSlot2.setVisibility(View.GONE);
         timeSlot3.setVisibility(View.GONE);
         timeSlot4.setVisibility(View.GONE);
-
         Button selectProfessor = (Button) view.findViewById(R.id.selectProfessorButton);
         selectProfessor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String selectedProfessor = displayProfDetails.getSelectedItem().toString();
+                System.out.println(selectedProfessor);
+                int getProfId = db.getProfessorId(selectedProfessor);
+                System.out.println(getProfId);
+
                 timeSlot1.setVisibility(View.VISIBLE);
                 timeSlot1.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
-                        sendEmail();
-                        timeSlot1.setVisibility(view.GONE);
+                    public void onClick(View view)
+                    {
+                        int timeId = 1;
+                        DatabaseConnect db = new DatabaseConnect();
+                        int getProfId = db.getProfessorId(selectedProfessor);
+                        String isScheduled = db.timeSlotAvailabity(timeId,getProfId);
+                        String professorEmailAddress = db.getProfessorEmailAddress(getProfId);
+                        if(isScheduled.equals("1"))
+                        {
+                            Toast.makeText(getContext(), "This slot is taken, please find another slot", Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            String emailMessageProfessor = "Hello Professor\n\nAn appointment is scheduled on Monday at 12:00" +
+                                    "PM-1:00PM with "+saveLoginDetails.getInstance().getFirstName()+" "+saveLoginDetails.getInstance().getLastName();
+                            System.out.println(emailMessageProfessor);
+                            String emailMessageStudent = "Hello\n\nYour appointment is scheduled with " +
+                                    "Professor "+selectedProfessor+"\n\nDate & Time: Monday, 12:00PM-1:00PM";
+                            db.updateSchedule(timeId,getProfId);
+                            sendEmail(emailMessageProfessor,emailMessageStudent,professorEmailAddress);
+                        }
                     }
                 });
                 timeSlot2.setVisibility(View.VISIBLE);
@@ -78,10 +101,10 @@ public class HomeFragment extends Fragment {
         return view;
     }
 
-    public void sendEmail()
+    public void sendEmail(String emailMessageProfessor, String emailMessageStudent,String professorEmailAddress)
     {
         String senderEmail = "testcis634@gmail.com";
-        String recieverEmail = "bsaishanthan@gmail.com";
+        String recieverEmailStudent = saveLoginDetails.getInstance().getEmailAddress();
         String senderPassword = "ztjjbsieyumsqpjn";
 
         String host = "smtp.gmail.com";
@@ -102,17 +125,21 @@ public class HomeFragment extends Fragment {
         });
 
         MimeMessage mimeMessage = new MimeMessage(session);
-
+        MimeMessage mimeMessage1 = new MimeMessage(session);
         try {
-            mimeMessage.addRecipient(Message.RecipientType.TO,new InternetAddress(recieverEmail));
+            mimeMessage.addRecipient(Message.RecipientType.TO,new InternetAddress(recieverEmailStudent));
             mimeMessage.setSubject("Confirmation Email");
-            mimeMessage.setText("Test Email");
+            mimeMessage.setText(emailMessageStudent);
+            mimeMessage1.addRecipient(Message.RecipientType.TO,new InternetAddress(professorEmailAddress));
+            mimeMessage1.setSubject("Appointment Details");
+            mimeMessage1.setText(emailMessageProfessor);
 
             Thread thread =  new Thread(new Runnable() {
                 @Override
                 public void run() {
                     try {
                         Transport.send(mimeMessage);
+                        Transport.send(mimeMessage1);
                     } catch (Exception e)
                     {
                         e.printStackTrace();

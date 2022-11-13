@@ -52,10 +52,11 @@ public class LoginPage extends AppCompatActivity {
             enteredPassword = findViewById(R.id.password);
             String enteredPasswordDetails = enteredPassword.getText().toString();
             boolean isPasswordCorrect = db.validatePassword(enteredPasswordDetails);
+            String studentEmailAddress = saveLoginDetails.getInstance().getEmailAddress();
             if(isPasswordCorrect)
             {
                 Toast.makeText(LoginPage.this, "Good to go", Toast.LENGTH_SHORT).show();
-
+                saveLoginDetails.getInstance().setDetails(enteredUserNameDetails);
                 Intent intent = new Intent(LoginPage.this,HomePage.class);
                 startActivity(intent);
 

@@ -78,7 +78,7 @@
 
             <Button
                 android:id="@+id/timeSlot1"
-                android:text="12:00pm - 1:00pm"
+                android:text="Monday\n12:00pm - 1:00pm"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:background="@color/green"
@@ -87,7 +87,7 @@
 
             <Button
                 android:id="@+id/timeSlot2"
-                android:text="1:30pm - 2:30pm"
+                android:text="Tuesday\n1:30pm - 2:30pm"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:background="@color/green"
@@ -105,7 +105,7 @@
 
             <Button
                 android:id="@+id/timeSlot3"
-                android:text="3:00pm - 4:00pm"
+                android:text="Wednesday\n3:00pm - 4:00pm"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:background="@color/green"
@@ -114,7 +114,7 @@
 
             <Button
                 android:id="@+id/timeSlot4"
-                android:text="3:30pm - 4:30pm"
+                android:text="Thursday\n3:30pm - 4:30pm"
                 android:textSize="20dp"
                 android:textColor="@color/black"
                 android:background="@color/green"
