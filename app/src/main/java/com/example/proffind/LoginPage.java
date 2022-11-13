@@ -58,8 +58,12 @@ public class LoginPage extends AppCompatActivity {
                 //if student, got to this page.
                 Toast.makeText(LoginPage.this, "Good to go", Toast.LENGTH_SHORT).show();
                 saveLoginDetails.getInstance().setDetails(enteredUserNameDetails);
-                Intent intent = new Intent(LoginPage.this,HomePage.class);
-                startActivity(intent);
+                System.out.println(saveLoginDetails.getInstance().getUserType());
+                if(saveLoginDetails.getInstance().getUserType().equals("STUDENT"))
+                {
+                    Intent intent = new Intent(LoginPage.this,HomePage.class);
+                    startActivity(intent);
+                }
             }
             else
             {

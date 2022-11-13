@@ -130,6 +130,23 @@ public class DatabaseConnect {
         return false;
     }
 
+    public String getUserType()
+    {
+        connection =connectToDatabase();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery("select userType from UserDetails" +
+                    " where userName = " + saveLoginDetails.getInstance().getUserType());
+            while(rs.next())
+            {
+                return rs.getString("userType");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public boolean validateUserName(String enteredUserName) {
         connection = connectToDatabase();
         try (Statement stmt = connection.createStatement()) {
