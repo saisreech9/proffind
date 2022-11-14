@@ -57,6 +57,15 @@ public class LoginPage extends AppCompatActivity {
             {
                 PasswordEncryption p = new PasswordEncryption();
                 String encryptedPassword = p.encryptPassword(enteredPasswordDetails);
+                EncryptionDES e = null;
+                try {
+                    e = new EncryptionDES();
+                    System.out.println("Encrypted Password "+e.encrypt("Hello@123"));
+                    System.out.println("Decrypted Password "+e.decrypt("vuUO6iju2LHTsXa01bcc4w=="));
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+
                 if(encryptedPassword.equals("e20f517179e9cd52ae29dae43c121b95"))
                 {
                     System.out.println("encryption works!");
