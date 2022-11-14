@@ -9,7 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,6 +30,7 @@ import javax.mail.internet.MimeMessage;
 public class HomeFragment extends Fragment {
 
     Button timeSlot1, timeSlot2, timeSlot3, timeSlot4;
+    TextView lastName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,8 @@ public class HomeFragment extends Fragment {
                 android.R.layout.simple_spinner_item,profNameDetails);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         displayProfDetails.setAdapter(dataAdapter);
-
+        lastName = (TextView) view.findViewById(R.id.lastName);
+        lastName.setText(saveLoginDetails.getInstance().getLastName());
 
         timeSlot1 = (Button) view.findViewById(R.id.timeSlot1);
         timeSlot2 = (Button) view.findViewById(R.id.timeSlot2);
@@ -181,7 +185,7 @@ public class HomeFragment extends Fragment {
     {
         String senderEmail = "testcis634@gmail.com";
         String recieverEmailStudent = saveLoginDetails.getInstance().getEmailAddress();
-        String senderPassword = "ztjjbsieyumsqpjn";
+        String senderPassword = "bpqrgotibqmdavss";
 
         String host = "smtp.gmail.com";
 

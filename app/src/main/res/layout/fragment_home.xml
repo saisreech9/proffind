@@ -36,7 +36,6 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:textSize="20dp"
-                android:text="Example"
                 android:layout_marginLeft="5dp" />
 
         </LinearLayout>

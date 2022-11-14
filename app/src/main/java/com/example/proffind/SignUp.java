@@ -129,11 +129,19 @@ public class SignUp extends AppCompatActivity {
                                                     String getTodayDate = dateFormatter.format(date);
                                                     String getTodayTime = timeFormatter.format(date);
                                                     userTypeDetails = userType.getSelectedItem().toString();
-                                                    db.populateUserDetailsTable(getLatestUserId+1,userNameDetails,firstNameDetails,
-                                                            lastNameDetails,emailAddressDetails,passwordDetails,userTypeDetails,getTodayDate,getTodayTime);
-                                                    Toast.makeText(SignUp.this, "Account Created", Toast.LENGTH_SHORT).show();
-                                                    Intent intent = new Intent(SignUp.this,LoginPage.class);
-                                                    startActivity(intent);
+                                                    //encrypt password and save.
+                                                    String encryptedPasswordDetails;
+                                                    try {
+                                                        EncryptionDES e = new EncryptionDES();
+                                                        encryptedPasswordDetails = e.encrypt(passwordDetails);
+                                                        db.populateUserDetailsTable(getLatestUserId+1,userNameDetails,firstNameDetails,
+                                                                lastNameDetails,emailAddressDetails,encryptedPasswordDetails,userTypeDetails,getTodayDate,getTodayTime);
+                                                        Toast.makeText(SignUp.this, "Account Created", Toast.LENGTH_SHORT).show();
+                                                        Intent intent = new Intent(SignUp.this,LoginPage.class);
+                                                        startActivity(intent);
+                                                    } catch (Exception ex) {
+                                                        ex.printStackTrace();
+                                                    }
                                                 } else {
                                                     Toast.makeText(SignUp.this, "Passwords do not match", Toast.LENGTH_SHORT).show();
                                                 }

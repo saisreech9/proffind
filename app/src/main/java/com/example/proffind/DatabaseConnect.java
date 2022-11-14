@@ -151,10 +151,12 @@ public class DatabaseConnect {
     public boolean validatePassword(String password) {
         connection = connectToDatabase();
         try (Statement stmt = connection.createStatement()) {
+            EncryptionDES e = new EncryptionDES();
+            String encryptedPassword = e.encrypt(password);
             ResultSet rs = stmt.executeQuery("select password from UserDetails where " +
-                    "password = " + "'" + password + "'");
+                    "password = " + "'" + encryptedPassword + "'");
             while (rs.next()) {
-                if (password.equals(rs.getString(1))) {
+                if (encryptedPassword.equals(rs.getString(1))) {
                     return true;
                 } else {
                     return false;

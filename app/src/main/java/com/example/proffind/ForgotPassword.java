@@ -54,12 +54,19 @@ public class ForgotPassword extends AppCompatActivity {
                 {
                     String userEmailAddress = saveLoginDetails.getInstance().getEmailAddress();
                     String password = saveLoginDetails.getInstance().getPassword();
-                    String passwordMessage = "Hello User,\n\nHope you have a good day\n Please find your" +
-                            " password details below:\n Password: "+password;
-                    sendPasswordEmail(userEmailAddress,passwordMessage);
-                    Toast.makeText(ForgotPassword.this, "Password details has been sent to your email address. Please check your email address", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(ForgotPassword.this,LoginPage.class);
-                    startActivity(intent);
+                    try {
+                        EncryptionDES e = new EncryptionDES();
+                        String decryptedPassword = e.decrypt(password);
+                        String passwordMessage = "Hello User,\n\nHope you have a good day\n\nPlease find your" +
+                                " password details below:\nPassword: "+decryptedPassword;
+                        sendPasswordEmail(userEmailAddress,passwordMessage);
+                        Toast.makeText(ForgotPassword.this, "Password details has been sent to your email address. Please check your email address", Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(ForgotPassword.this,LoginPage.class);
+                        startActivity(intent);
+
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 }
                 else
                 {
@@ -71,7 +78,7 @@ public class ForgotPassword extends AppCompatActivity {
     public void sendPasswordEmail(String userEmailAddress, String passwordMessage)
     {
         String senderEmail = "testcis634@gmail.com";
-        String senderPassword = "ztjjbsieyumsqpjn";
+        String senderPassword = "bpqrgotibqmdavss";
 
         String host = "smtp.gmail.com";
 
