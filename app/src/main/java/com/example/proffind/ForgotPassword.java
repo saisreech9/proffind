@@ -45,8 +45,6 @@ public class ForgotPassword extends AppCompatActivity {
         forgotPasswordSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent = new Intent(ForgotPassword.this,LoginPage.class);
-//                startActivity(intent);
                 forgotPasswordUserName = findViewById(R.id.forgotPasswordUserName);
                 String enteredUserName = forgotPasswordUserName.getText().toString();
                 saveLoginDetails.getInstance().setDetails(enteredUserName);

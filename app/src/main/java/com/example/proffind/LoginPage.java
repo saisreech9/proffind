@@ -55,6 +55,12 @@ public class LoginPage extends AppCompatActivity {
             boolean isPasswordCorrect = db.validatePassword(enteredPasswordDetails);
             if(isPasswordCorrect)
             {
+                PasswordEncryption p = new PasswordEncryption();
+                String encryptedPassword = p.encryptPassword(enteredPasswordDetails);
+                if(encryptedPassword.equals("e20f517179e9cd52ae29dae43c121b95"))
+                {
+                    System.out.println("encryption works!");
+                }
                 //if student, got to this page.
                 Toast.makeText(LoginPage.this, "Good to go", Toast.LENGTH_SHORT).show();
                 saveLoginDetails.getInstance().setDetails(enteredUserNameDetails);
