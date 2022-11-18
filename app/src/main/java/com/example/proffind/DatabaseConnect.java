@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DatabaseConnect {
 
-    private static final String ip = "192.168.0.15";
+    private static final String ip = "172.18.93.194";
     private static final String port = "1433";
     private static final String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static final String database = "proffind";
