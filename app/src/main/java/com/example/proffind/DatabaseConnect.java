@@ -171,6 +171,22 @@ public class DatabaseConnect {
         return false;
     }
 
+    public String getUserName(int userId)
+    {
+        connection = connectToDatabase();
+        try (Statement stmt = connection.createStatement()) {
+            ResultSet rs = stmt.executeQuery("select firstName,lastName from UserDetails where " +
+                    "userId = " + "'" + userId + "'");
+            while (rs.next()) {
+
+                return rs.getString("firstName") + " " + rs.getString("lastName");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public void updateFirstName(String updatedFirstName, String enteredFirstName) {
         connection = connectToDatabase();
         try (Statement stmt = connection.createStatement()) {
@@ -265,7 +281,36 @@ public class DatabaseConnect {
             e.printStackTrace();
         }
     }
+    public void updateProfessorAvailability(int availableId)
+    {
+        connection =connectToDatabase();
+        try(Statement stmt = connection.createStatement())
+        {
+            String updateSchedule = "update ProfessorAvailability set isScheduled = 0 where availableId="+"'"+availableId+"'";
 
+            stmt.executeUpdate(updateSchedule);
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+    public void deleteSchedule(int availableId)
+    {
+        connection =connectToDatabase();
+        try(Statement stmt = connection.createStatement())
+        {
+            String deleteSchedule = "delete from Schedule where availableId="+"'"+availableId+"'";
+
+            stmt.executeUpdate(deleteSchedule);
+
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
     public List<Map<String,Integer>> getScheduleDetails(int profId)
     {
         List<Map<String,Integer>> appointmentDetails = new ArrayList<>();
@@ -302,6 +347,44 @@ public class DatabaseConnect {
             }
         }
         catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public String getDay(int availableId)
+    {
+        connection = connectToDatabase();
+        try(Statement stmt = connection.createStatement())
+        {
+            ResultSet rs = stmt.executeQuery("select availableDay from ProfessorAvailability " +
+                    "where availableId = " + "'" + availableId + "'");
+            while(rs.next())
+            {
+                return rs.getString(1);
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int getTimeSlotId(int availableId)
+    {
+        connection = connectToDatabase();
+        try(Statement stmt = connection.createStatement())
+        {
+            ResultSet rs = stmt.executeQuery("select timeId from ProfessorAvailability " +
+                    "where availableId = " + "'" + availableId + "'");
+            while(rs.next())
+            {
+                return rs.getInt(1);
+            }
+        }
+        catch(Exception e)
         {
             e.printStackTrace();
         }

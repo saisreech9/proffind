@@ -111,6 +111,7 @@ public class HomeFragment extends Fragment {
                         DatabaseConnect db = new DatabaseConnect();
                         int getProfId = db.getProfessorId(selectedProfessor);
                         String isScheduled = db.timeSlotAvailabity(timeId,getProfId);
+                        int availableId = db.getAvailableId(timeId,getProfId);
                         String professorEmailAddress = db.getProfessorEmailAddress(getProfId);
                         if(isScheduled.equals("1"))
                         {
@@ -118,6 +119,7 @@ public class HomeFragment extends Fragment {
                         }
                         else
                         {
+                            db.insertScheduleTable(saveLoginDetails.getInstance().getUserId(),availableId,getProfId);
                             String emailMessageProfessor = "Hello Professor\n\nAn appointment is scheduled on Tuesday at 1:30" +
                                     "PM-2:30PM with "+saveLoginDetails.getInstance().getFirstName()+" "+saveLoginDetails.getInstance().getLastName();
                             System.out.println(emailMessageProfessor);
@@ -138,12 +140,14 @@ public class HomeFragment extends Fragment {
                         int getProfId = db.getProfessorId(selectedProfessor);
                         String isScheduled = db.timeSlotAvailabity(timeId,getProfId);
                         String professorEmailAddress = db.getProfessorEmailAddress(getProfId);
+                        int availableId = db.getAvailableId(timeId,getProfId);
                         if(isScheduled.equals("1"))
                         {
                             Toast.makeText(getContext(), "This slot is taken, please find another slot", Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
+                            db.insertScheduleTable(saveLoginDetails.getInstance().getUserId(),availableId,getProfId);
                             String emailMessageProfessor = "Hello Professor\n\nAn appointment is scheduled on Wednesday at 3:00" +
                                     "PM-4:00PM with "+saveLoginDetails.getInstance().getFirstName()+" "+saveLoginDetails.getInstance().getLastName();
                             System.out.println(emailMessageProfessor);
@@ -164,12 +168,14 @@ public class HomeFragment extends Fragment {
                         int getProfId = db.getProfessorId(selectedProfessor);
                         String isScheduled = db.timeSlotAvailabity(timeId,getProfId);
                         String professorEmailAddress = db.getProfessorEmailAddress(getProfId);
+                        int availableId = db.getAvailableId(timeId,getProfId);
                         if(isScheduled.equals("1"))
                         {
                             Toast.makeText(getContext(), "This slot is taken, please find another slot", Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
+                            db.insertScheduleTable(saveLoginDetails.getInstance().getUserId(),availableId,getProfId);
                             String emailMessageProfessor = "Hello Professor\n\nAn appointment is scheduled on Thursday at 3:30" +
                                     "PM-4:30PM with "+saveLoginDetails.getInstance().getFirstName()+" "+saveLoginDetails.getInstance().getLastName();
                             System.out.println(emailMessageProfessor);
