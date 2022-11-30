@@ -7,58 +7,48 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ProfessorHomeFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class ProfessorHomeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ProfessorHomeFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfessorHomeFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ProfessorHomeFragment newInstance(String param1, String param2) {
-        ProfessorHomeFragment fragment = new ProfessorHomeFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
+    ListView listOfAppointments;
+    Button scheduleOne;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_professor_home, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_professor_home,container,false);
+        DatabaseConnect db = new DatabaseConnect();
+        int profId = db.getProfessorId(saveLoginDetails.getInstance().getFirstName()+" "+saveLoginDetails.getInstance().getLastName());
+        //System.out.println((saveLoginDetails.getInstance().getFirstName()+" "+saveLoginDetails.getInstance().getLastName()).trim().equals("Weidong Xiong"));
+        List<Map<String,Integer>> getScheduleDetails = new ArrayList<Map<String,Integer>>();
+        System.out.println(profId);
+        getScheduleDetails = db.getScheduleDetails(profId);
+        System.out.println(getScheduleDetails);
+        System.out.println(getScheduleDetails.size());
+        if(getScheduleDetails.size()==1)
+        {
+            scheduleOne = view.findViewById(R.id.line1);
+            scheduleOne.setText("Name:Sai Sree\nTime: Example");
+        }
+//        //System.out.println("Schedule details "+db.getScheduleDetails());
+//        //listOfAppointments = view.findViewById(R.id.listOfAppointments);
+//        ArrayList<String> arrayList = new ArrayList<>();
+//        for(int i =0;i<getScheduleDetails.size();i++)
+//        {
+//            //arrayList.add(getScheduleDetails.get(i));
+//        }
+//        arrayList.add("Name: Sai Sree\nDay: Thursday\nTime: 12:00pm - 1:00pm");
+//        arrayList.add("ANDROID");
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1 htr5,arrayList);
+//        listOfAppointments.setAdapter(adapter);
+        return view;
     }
 }

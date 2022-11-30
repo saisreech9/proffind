@@ -15,6 +15,16 @@ public class saveLoginDetails {
     String addres;
     String userName;
 
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    int userId;
+
     public String getPassword() {
         return password;
     }
@@ -108,6 +118,7 @@ public class saveLoginDetails {
                         setGender(rs.getString("gender"));
                         setAddres(rs.getString("address"));
                         setPassword(rs.getString("password"));
+                        setUserId(rs.getInt("userId"));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();

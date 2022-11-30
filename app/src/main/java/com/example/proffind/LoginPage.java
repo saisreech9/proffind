@@ -55,28 +55,17 @@ public class LoginPage extends AppCompatActivity {
             boolean isPasswordCorrect = db.validatePassword(enteredPasswordDetails);
             if(isPasswordCorrect)
             {
-                PasswordEncryption p = new PasswordEncryption();
-                String encryptedPassword = p.encryptPassword(enteredPasswordDetails);
-                EncryptionDES e = null;
-                try {
-                    e = new EncryptionDES();
-                    System.out.println("Encrypted Password "+e.encrypt("Hello@123"));
-                    System.out.println("Decrypted Password "+e.decrypt("vuUO6iju2LHTsXa01bcc4w=="));
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-
-                if(encryptedPassword.equals("e20f517179e9cd52ae29dae43c121b95"))
-                {
-                    System.out.println("encryption works!");
-                }
                 //if student, got to this page.
                 Toast.makeText(LoginPage.this, "Good to go", Toast.LENGTH_SHORT).show();
                 saveLoginDetails.getInstance().setDetails(enteredUserNameDetails);
-                System.out.println(saveLoginDetails.getInstance().getUserType());
                 if(saveLoginDetails.getInstance().getUserType().equals("STUDENT"))
                 {
                     Intent intent = new Intent(LoginPage.this,HomePage.class);
+                    startActivity(intent);
+                }
+                else if(saveLoginDetails.getInstance().getUserType().equals("PROFESSOR"))
+                {
+                    Intent intent = new Intent(LoginPage.this,ProfessorHomePage.class);
                     startActivity(intent);
                 }
             }

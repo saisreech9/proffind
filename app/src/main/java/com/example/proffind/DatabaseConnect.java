@@ -8,15 +8,18 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DatabaseConnect {
 
-    private static final String ip = "172.18.93.194";
+    private static final String ip = "192.168.0.20";
     private static final String port = "1433";
     private static final String Classes = "net.sourceforge.jtds.jdbc.Driver";
     private static final String database = "proffind";
     private static final String username = "sreee";
-    private static final String password = "123456";
+    private static final String password = "12345";
     private static String url = "jdbc:jtds:sqlserver://" + ip + ":" + port + ";" +
             "databasename=" + database + ";user=" + username + ";password=" + password + ";";
 
@@ -242,6 +245,63 @@ public class DatabaseConnect {
             }
         }
         catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public void insertScheduleTable(int userId, int availableId, int profId)
+    {
+        connection = connectToDatabase();
+        try {
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(
+                    "insert into Schedule values("
+                            + "'" + userId + "'" + ","
+                            + "'" + availableId + "'" + ","
+                            + "'" + profId + "'" + ")" );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<Map<String,Integer>> getScheduleDetails(int profId)
+    {
+        List<Map<String,Integer>> appointmentDetails = new ArrayList<>();
+        connection = connectToDatabase();
+        try {
+            Statement statement = connection.createStatement();
+            String getAppointmentSchedule = "select * from Schedule where profId="+
+                    profId;
+            ResultSet rs = statement.executeQuery(getAppointmentSchedule);
+            while(rs.next())
+            {
+                Map<String,Integer> map = new HashMap<String,Integer>();
+                map.put("userId",rs.getInt("userId"));
+                map.put("availableId",rs.getInt("availableId"));
+                map.put("profId",rs.getInt("profId"));
+                appointmentDetails.add(map);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return appointmentDetails;
+    }
+
+    public int getAvailableId(int timeId, int profId)
+    {
+        connection =connectToDatabase();
+        try(Statement stmt = connection.createStatement())
+        {
+            ResultSet rs = stmt.executeQuery("select * from ProfessorAvailability where" +
+                    " timeId = " + "'" + timeId + "'" + "and profId=" +"'" + profId + "'");
+            while(rs.next())
+            {
+                return rs.getInt("availableId");
+            }
+        }
+        catch (Exception e)
         {
             e.printStackTrace();
         }

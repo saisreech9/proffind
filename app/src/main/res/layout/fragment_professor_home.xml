@@ -4,22 +4,49 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ProfessorHomeFragment">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+<!--                <ListView-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:id="@+id/listOfAppointments"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:divider="@color/black"-->
+<!--                    android:dividerHeight="1dp"-->
+<!--                    android:listSelector="@color/green">-->
+<!--                </ListView>-->
 
-    <LinearLayout
-        android:id="@+id/professorFragmentLinearLayout"
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+                <Button
+                    android:id="@+id/line1"
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"/>
 
-        <ListView
-            android:id="@+id/listOfAppointments"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/appointmentDeleteButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+                <TextView
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:textSize="20dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/line3"
+                    android:textSize="20dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:id="@+id/line4"
+                    android:textSize="20dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
 
 </ScrollView>
